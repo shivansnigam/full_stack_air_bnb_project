@@ -3,7 +3,6 @@ if(process.env.NODE_ENV != "production") {
 }
 
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
@@ -20,8 +19,15 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js")
 // const review = require("./models/review.js");
 const Listing = require("./models/listing"); // Listing model ko import karein
+const cors = require('cors');
 
+const app = express();
 
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+  }));
  
 const dbUrl = process.env.MONGO_URL
 
@@ -96,9 +102,9 @@ app.use((req,res,next) => {
 });
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-    res.status(200).json({ message: 'Server is healthy!' });
-});
+// app.get('/health', (req, res) => {
+//     res.status(200).json({ message: 'Server is healthy!' });
+// });
 
 
 //inse pehle krn h 
@@ -126,7 +132,10 @@ app.use((err,req,res,next) => {
     // res.status(statusCode).send(message)
 })
 
-
+// Default route for checking API status
+app.get("/", (req, res) => {
+    res.send("API is running...");
+  });
 
 app.listen(5000, () => {
     console.log("server is listening to port 5000")

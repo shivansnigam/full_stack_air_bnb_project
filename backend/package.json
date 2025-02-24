@@ -1,13 +1,15 @@
 {
-  "engines":{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "airbnb",
+  "main": "app.js",
+  "engines": {
     "node": "20.9.0"
   },
-  "name": "phase-1-basic-set-up",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "vercel-build": "echo 'Skipping build step'"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,7 @@
     "@mapbox/mapbox-sdk": "^0.15.3",
     "cloudinary": "^1.41.1",
     "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "ejs-mate": "^4.0.0",
