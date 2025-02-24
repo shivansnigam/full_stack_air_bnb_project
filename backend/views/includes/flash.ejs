@@ -1,0 +1,38 @@
+
+<style>
+    @media screen and (max-width: 768px) {
+      .alert {
+        width: 60%; 
+        
+      }
+    }
+  
+   
+    @media screen and (min-width: 769px) {
+      .alert {
+        width: 50%; /* Adjust the width for larger screens */
+        margin-left: 25%; /* This replicates the offset-3 effect */
+      }
+    }
+  </style>
+  
+<% if(success && success.length)  { %>
+    <div class=" success alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close">
+            
+        </button>
+    </div>
+<% } %>
+
+
+<!-- error parser -->
+
+<% if(error && error.length)  { %>
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close">
+            
+        </button>
+    </div>
+<% } %>

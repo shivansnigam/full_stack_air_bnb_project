@@ -1,0 +1,187 @@
+<% layout("/layout/boilerplate") %>
+
+<div class="container">
+    <div class="row mt-8">
+        <h2 class="col-12 text-center mb-4 title"></h2>
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto form-container">
+            <form action="/login" method="POST" class="needs-validation form" novalidate>
+                <div class="mb-1">
+                    <label for="username" class="form-label">Username</label>
+                    <input 
+                        name="username"
+                        id="username"
+                        type="text" 
+                        class="form-control input" 
+                        required 
+                    />      
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input 
+                        name="password"
+                        id="password"
+                        type="password"  
+                        class="form-control input" 
+                        required 
+                    />
+                </div>
+                
+                <button class="btn form-btn w-100">Login</button>
+
+                <div class="buttons-container">
+                    <p class="sign-up-label">Don't have an account?</p>
+                     
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Your custom styles */
+    .container {
+        margin-top: 30px;
+        max-width: 600px; /* Set a max width for the container */
+        padding: 20px; /* Add some padding for mobile view */
+    }
+
+    h2 {
+        color: royalblue;
+    }
+
+    .form-container {
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 20px 30px;
+        margin: auto; /* Center the form on the page */
+    }
+
+    .title {
+        text-align: center;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        margin: 10px 0 30px 0;
+        font-size: 28px;
+        font-weight: 800;
+    }
+
+    .form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 15px;
+    }
+
+    .input {
+        border-radius: 20px;
+        border: 1px solid #c0c0c0;
+        outline: 0 !important;
+        box-sizing: border-box;
+        padding: 12px 15px;
+    }
+
+    .page-link {
+        text-decoration: underline;
+        margin: 0;
+        text-align: end;
+        color: #747474;
+        text-decoration-color: #747474;
+    }
+
+    .form-btn {
+        padding: 10px 15px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        border-radius: 20px;
+        border: 0 !important;
+        outline: 0 !important;
+        background: teal;
+        color: white;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: background-color 0.3s;
+    }
+
+    .form-btn:hover {
+        background-color: #006666; /* Darker shade on hover */
+    }
+
+    .form-btn:active {
+        box-shadow: none;
+    }
+
+    .sign-up-label {
+        margin: 0;
+        font-size: 10px;
+        color: #747474;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    .sign-up-link {
+        margin-left: 1px;
+        font-size: 11px;
+        text-decoration: underline;
+        text-decoration-color: teal;
+        color: teal;
+        cursor: pointer;
+        font-weight: 800;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+
+    .buttons-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 20px;
+        gap: 15px;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 575.98px) {
+        h2 {
+            font-size: 1.5rem; /* Adjust font size for extra small screens */
+        }
+        .container {
+            padding: 10px; /* Reduce padding for smaller screens */
+        }
+        .form-container {
+            width: 100%;
+            margin-top: -30px; /* Full width on extra small screens */
+        }
+    }
+
+    @media (min-width: 576px) {
+        h2 {
+            font-size: 2rem; /* Adjust font size for small screens */
+        }
+    }
+
+    @media (min-width: 768px) {
+        h2 {
+            font-size: 2.5rem; /* Adjust font size for medium screens */
+        }
+        .form-container {
+            width: 80%; /* 80% width on medium screens */
+        }
+    }
+
+    @media (min-width: 992px) {
+        h2 {
+            font-size: 3rem; /* Adjust font size for large screens */
+        }
+    }
+
+    @media (min-width: 1200px) {
+        h2 {
+            font-size: 3.5rem; /* Adjust font size for extra large screens */
+        }
+    }
+
+    @media (min-width: 1400px) {
+        h2 {
+            font-size: 4rem; /* Adjust font size for extra extra large screens */
+        }
+    }
+</style>

@@ -1,0 +1,362 @@
+<style>
+    /* From Uiverse.io by zjssun */ 
+.button {
+  position: relative;
+  padding: 10px 22px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #fe424d;
+  transition: all 0.2s ease;
+}
+
+.button:active {
+  transform: scale(0.96);
+}
+
+.button:before,
+.button:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.button:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.button:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+    /* Navbar Styling */
+    .navbar {
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 0.5rem 0;
+    }
+
+    .navbar-brand i {
+        font-size: 1.5rem;
+        color: #fe424d;
+        padding: 1rem;
+    }
+
+    .navbar-toggler {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler-icon {
+        font-size: 1.25rem;
+        color: #333;
+    }
+
+    /* Customize Nav Links */
+    .navbar-nav .nav-link {
+        color: #333;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #fe424d;
+    }
+
+    /* Mobile Specific Styling */
+    @media (max-width: 575.98px) {
+        .input-container {
+     
+        margin-left: 40px;
+        
+    }
+        .navbar-collapse {
+            justify-content: center;
+            background-color: #fff;
+            padding: 1rem;
+        }
+         .button{
+            margin-top: 20px;
+         }
+        .navbar-nav .nav-link {
+            text-align: center;
+            font-size: 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .d-flex {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navbar Toggler Animation */
+        .navbar-toggler-icon {
+            width: 30px;
+            height: 3px;
+            background-color: #333;
+            display: block;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler-icon:before,
+        .navbar-toggler-icon:after {
+            content: '';
+            width: 30px;
+            height: 3px;
+            background-color: #333;
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler-icon:before {
+            top: -8px;
+        }
+
+        .navbar-toggler-icon:after {
+            bottom: -8px;
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon {
+            background-color: transparent;
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon:before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .navbar-toggler.collapsed .navbar-toggler-icon:after {
+            transform: rotate(-45deg);
+            bottom: 0;
+        }
+    }
+
+    /* Search Box Styling (from Uiverse.io) */
+    .input-container {
+        position: relative;
+        width: 100%;
+        max-width: 270px;
+        margin-right: 25px;
+        
+    }
+
+    .input {
+        width: 100%;
+        height: 60px;
+        padding: 12px;
+        font-size: 18px;
+        font-family: "Courier New", monospace;
+        color: #000;
+        background-color: #fff;
+        border: 4px solid #000;
+        border-radius: 0;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 8px 8px 0 #000;
+        
+    }
+
+    .input::placeholder {
+        color: #888;
+    }
+
+    .input:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 12px 12px 0 #000;
+    }
+
+    .input:focus {
+        background-color: #010101;
+        color: #fff;
+        border-color: #d6d9dd;
+    }
+
+    .input:focus::placeholder {
+        color: #fff;
+    }
+
+    .input:focus {
+        animation: shake 0.5s ease-in-out;
+    }
+
+    @keyframes shake {
+        0% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-5px) rotate(-5deg);
+        }
+        50% {
+            transform: translateX(5px) rotate(5deg);
+        }
+        75% {
+            transform: translateX(-5px) rotate(-5deg);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes glitch {
+        0% {
+            transform: none;
+            opacity: 1;
+        }
+        7% {
+            transform: skew(-0.5deg, -0.9deg);
+            opacity: 0.75;
+        }
+        10% {
+            transform: none;
+            opacity: 1;
+        }
+        30% {
+            transform: skew(0.8deg, -0.1deg);
+            opacity: 0.75;
+        }
+        100% {
+            transform: none;
+            opacity: 1;
+        }
+    }
+
+    .input:not(:placeholder-shown) {
+        animation: glitch 1s linear infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .input-container::after {
+        content: "|";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #000;
+        animation: blink 0.7s step-end infinite;
+    }
+
+    .input:focus + .input-container::after {
+        color: #fff;
+    }
+
+    .input:not(:placeholder-shown) {
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-shadow: 0px 0px 0 #000;
+    }
+</style>
+
+<nav class="navbar navbar-expand-md border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-regular fa-compass" ></i>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <!-- Updated Search Box -->
+                <form class="d-flex" role="search">
+                    <div class="input-container">
+                        <input class="input" type="search" placeholder="Your Destination">
+                    </div>
+                    <button class="button">
+                         search
+                      </button>
+                </form>
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Airbnb your home</a>
+                <% if (!currUser) { %>
+                    <a class="nav-link" href="/signup"><b>Sign up</b></a>
+                    <a class="nav-link" href="/login"><b>Log in</b></a>
+                <% } %>
+                <% if (currUser) { %>
+                    <a class="nav-link" href="/logout"><b>Log out</b></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,246 @@
+<% layout("/layout/boilerplate") %>
+
+<div class="container">
+    <div class="row mt-3">
+        <h2 class="col-md-6 offset-md-3 col-12 text-center title">Sign Up</h2>
+        <div class="col-md-6 offset-md-3 col-12">
+            <form action="/signup" method="POST" class="needs-validation form" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">
+                        <input 
+                         name="username"
+                         id="username"
+                         type="text" 
+                         class="form-control input" 
+                         required 
+                         placeholder=" "
+                        />
+                        <span>Username</span>
+                    </label>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">
+                        <input 
+                         name="email"
+                         id="email"
+                         type="email"  
+                         class="form-control input" 
+                         required
+                         placeholder=" "
+                        />            
+                        <span>Email</span>
+                    </label>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">
+                        <input 
+                         name="password"
+                         id="password"
+                         type="password"  
+                         class="form-control input" 
+                         required 
+                         placeholder=" "
+                        />
+                        <span>Password</span>
+                    </label>
+                </div>
+                <button class="btn btn-success w-100 submit">Sign Up</button>
+            </form>
+            <p class="signin">Already have an account? <a href="/login">Sign in</a></p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Existing styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.title {
+  font-size: 28px;
+  color: royalblue;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before, .title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: royalblue;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: royalblue;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message, .signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: royalblue;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 15px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span, .form label .input:valid + span {
+  top: 30px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:valid + span {
+  color: green;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 575.98px) { /* Small screen (sm) */
+    h2.title {
+        font-size: 1.5rem;
+    }
+
+    form {
+        padding: 1rem;
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) { /* Medium screen (md) */
+    .form {
+        max-width: 400px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { /* Large screen (lg) */
+    .form {
+        max-width: 450px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) { /* Extra large screen (xl) */
+    .form {
+        max-width: 500px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (min-width: 1200px) { /* Extra extra large screen (xxl) */
+    .form {
+        max-width: 550px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+}
+</style>

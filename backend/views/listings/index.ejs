@@ -1,0 +1,374 @@
+<% layout("/layout/boilerplate") %> <%= success %>
+
+<style>
+    /* Main Filters Container */
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center; /* Center the filters */
+        margin-bottom: 2rem; /* Space below the filters */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        padding: 10px 0; /* Add padding for the slider */
+    }
+
+    .filter {
+        text-align: center;
+        margin: 1rem; /* Add uniform margin */
+        opacity: 0.7;
+        transition: opacity 0.3s; /* Smooth opacity transition */
+        padding: 0.5rem; /* Add padding for better touch targets */
+        border: 1px solid transparent; /* Default border for modern look */
+        border-radius: 1rem; /* Rounded corners */
+        background-color: #f8f9fa; /* Light background for visibility */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+        border: 1px solid #007bff; /* Highlight border on hover */
+        background-color: #e2e6ea; /* Darken background on hover */
+    }
+
+    .filter div {
+        font-size: 2rem; /* Increase icon size */
+        color: #007bff; /* Icon color */
+        transition: transform 0.3s; /* Smooth transition for scaling effect */
+    }
+
+    .filter:hover div {
+        transform: scale(1.2); /* Scale icon on hover */
+    }
+
+    .filter p {
+        font-size: 0.9rem; /* Adjust text size */
+        margin-top: 0.5rem; /* Space between icon and text */
+    }
+
+    .tax-info {
+        display: none;
+    }
+
+    .tax-switch {
+         
+         
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 1rem; /* Adjust margin for better spacing */
+        display: flex;
+        align-items: center;
+        
+    }
+
+    /* Card Layout */
+    .listing-card {
+        margin: 0 5px;
+    }
+
+    .listing-card:hover {
+        transform: scale(1.05); /* Slight zoom effect on hover */
+    }
+
+    /* Responsive Styles */
+    .row {
+        margin: 0; /* Remove margin from rows */
+    }
+
+    /* Adjust card size for different screen sizes */
+    @media (max-width: 576px) {
+    .filter div {
+        font-size: 1.5rem; /* Mobile screens ke liye icon size ko chhota kar do */
+    }
+
+    .filter p {
+        font-size: 0.7rem; /* Mobile screens ke liye text size bhi thoda chhota kar do */
+    }
+}
+
+    @media (max-width: 576px) {
+        .tax-switch {
+            margin-top: 70px;
+         margin-left: -1rem; /* Adjust margin for better spacing */
+         
+     }
+        .listing-card {
+            width: 90%; /* Full width on extra small screens */
+            margin: 0 auto; /* Center the card */
+        }
+
+        /* Filters display horizontally on mobile */
+        #filters {
+            flex-direction: row; /* Change to row for mobile */
+            justify-content: flex-start; /* Align items to the start */
+            flex-wrap: nowrap;
+            
+        }
+
+        .filter {
+            flex: 0 0 auto; /* Prevent filters from stretching */
+        }
+    }
+
+    @media (min-width: 576px) and (max-width: 768px) {
+        .listing-card {
+            width: 80%; /* Slightly smaller on small screens */
+            margin: 0 auto; /* Center the card */
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 992px) {
+        .listing-card {
+            width: 45%; /* Two columns on medium screens */
+        }
+    }
+
+    @media (min-width: 992px) {
+        .listing-card {
+            width: 30%; /* Three columns on large screens */
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .listing-card {
+            width: 22%; /* Four columns on extra large screens */
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .listing-card {
+            width: 100%; /* Five columns on extra extra large screens */
+        }
+    }
+    .scroll-button {
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    border-radius: 50%; /* Circular buttons */
+    width: 30px; /* Width of buttons */
+    height: 30px; /* Height of buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    position: absolute; /* Position absolute to place it correctly */
+    z-index: 1; /* Ensure buttons are above other elements */
+}
+
+.scroll-button.left {
+    left: 10px; /* Position left button */
+    top: 40%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust position */
+}
+
+.scroll-button.right {
+    right: 10px; /* Position right button */
+    top: 40%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust position */
+}
+
+/* Hide scroll buttons on larger screens */
+@media (min-width: 768px) { /* Adjust this value based on your needs */
+    .scroll-button {
+        display: none; /* Hide scroll buttons */
+    }
+}
+
+    /* Add a glowing animation effect to the toggle button */
+@keyframes glowing {
+    0% {
+        background-color: #007bff;
+        box-shadow: 0 0 5px #007bff;
+    }
+    50% {
+        background-color: #00dbde;
+        box-shadow: 0 0 20px #00dbde;
+    }
+    100% {
+        background-color: #007bff;
+        box-shadow: 0 0 5px #007bff;
+    }
+}
+
+/* Apply the animation to the toggle switch */
+.tax-switch .form-check-input {
+    animation: glowing 2s infinite; /* Runs the animation continuously */
+    border-color: #007bff;
+    box-shadow: 0 0 10px #007bff;
+    transition: background-color 0.3s ease;
+}
+
+/* Optional: Add hover effect to intensify the glow when hovered */
+.tax-switch .form-check-input:hover {
+    background-color: #00dbde; /* Changes the background color on hover */
+    box-shadow: 0 0 30px #00dbde;
+}
+
+</style>
+
+
+<div id="filters">
+    <button class="scroll-button left" onclick="scrollFiltersLeft()">&#10094;</button> <!-- Left Scroll Button -->
+    
+    <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-regular fa-snowflake"></i></div>
+        <p>Arctic</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p>
+    </div>
+    
+    <div class="filter">
+        <div><i class="fa-solid fa-plane"></i></div>
+        <p>Airports</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-tree"></i></div>
+        <p>Forests</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-mountain-sun"></i></div>
+        <p>Sunset Views</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-fish"></i></div>
+        <p>Fishing Spots</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-bicycle"></i></div>
+        <p>Cycling Trails</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-hiking"></i></div>
+        <p>Hiking</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-water"></i></div>
+        <p>Lakes</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-paintbrush"></i></div>
+        <p>Art Galleries</p>
+    </div>
+    <div class="filter">
+        <div><i class="fa-solid fa-music"></i></div>
+        <p>Live Music</p>
+    </div>
+    
+    <button class="scroll-button right" onclick="scrollFiltersRight()">&#10095;</button> <!-- Right Scroll Button -->
+</div>
+
+<div class="tax-switch">
+    <div class="form-check form-check-reverse form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Display Taxes </label>
+    </div>
+</div>
+
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card mt-3" style="position: relative; width: 300px; height: 400px; background-color: #000; display: flex; flex-direction: column; justify-content: end; padding: 12px; gap: 12px; border-radius: 8px; cursor: pointer; color: white;">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 250px; border-radius: 8px;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="heading"><b><%= listing.title %></b></p>
+                    <p>&#8377; <%= listing.price.toLocaleString("en-IN") %> /Night</p>
+                    <i class="tax-info" style="display: none;">&nbsp; &nbsp; +18% GST</i>
+                </div>
+
+                <style>
+                    .card::before {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        left: -5px;
+                        margin: auto;
+                        width: 310px; /* Updated width for the gradient effect */
+                        height: 410px; /* Updated height for the gradient effect */
+                        border-radius: 10px;
+                        background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+                        z-index: -10;
+                        pointer-events: none;
+                        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    }
+
+                    .card::after {
+                        content: "";
+                        z-index: -1;
+                        position: absolute;
+                        inset: 0;
+                        background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+                        transform: translate3d(0, 0, 0) scale(0.95);
+                        filter: blur(20px);
+                    }
+
+                    .card:hover::after {
+                        filter: blur(30px);
+                    }
+
+                    .card:hover::before {
+                        transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
+                    }
+                </style>
+            </div>
+        </a>
+    <% } %>
+</div>
+<script>
+   function scrollFiltersLeft() {
+        console.log("Scrolling left");
+        document.getElementById("filters").scrollBy({ 
+            top: 0, 
+            left: -200, // Scroll left by 200px
+            behavior: 'smooth' // Smooth scrolling
+        });
+    }
+
+    function scrollFiltersRight() {
+        console.log("Scrolling right");
+        document.getElementById("filters").scrollBy({ 
+            top: 0, 
+            left: 200, // Scroll right by 200px
+            behavior: 'smooth' // Smooth scrolling
+        });
+    }
+
+    let taxswitch = document.getElementById("flexSwitchCheckDefault");
+    taxswitch.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("tax-info");
+        for (let i = 0; i < taxInfo.length; i++) {
+            taxInfo[i].style.display = taxInfo[i].style.display === "none" ? "block" : "none";
+        }
+    });
+</script>

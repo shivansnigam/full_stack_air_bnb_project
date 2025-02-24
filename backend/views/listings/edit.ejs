@@ -1,0 +1,80 @@
+<% layout("/layout/boilerplate") %>
+<div style="max-width: 800px; margin: auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+    <h3 style="text-align: center; margin-bottom: 1.5rem; color: #333;">Edit Your Listings</h3>
+    <form method="post" action="/listings/<%= listing._id %>?_method=put" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div style="margin-bottom: 1rem;">
+            <label for="title" class="form-label" style="font-weight: 600;">Title</label>
+            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+            <div class="valid-feedback">Title looks good!</div>
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label for="description" class="form-label" style="font-weight: 600;">Description</label>
+            <textarea name="listing[description]" class="form-control" required style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"><%= listing.description %></textarea>
+            <div class="invalid-feedback">Please enter a short description!</div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label>Original Listing Image</label><br>
+            <div style="max-width: 70%; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                <img src="<%= originalImageUrl %>" style="width: 100%; height: auto;" alt="Original Listing">
+            </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            <label for="image" class="form-label" style="font-weight: 600;">Upload New Image</label>
+            <input name="listing[image]" type="file" class="form-control" style="border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1 1 30%; margin-bottom: 1rem;">
+                <label for="price" class="form-label" style="font-weight: 600;">Price</label>
+                <input name="listing[price]" type="number" value="<%= listing.price %>" class="form-control" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+                <div class="invalid-feedback">Price should be valid!</div>
+            </div>
+
+            <div style="flex: 1 1 65%; margin-bottom: 1rem;">
+                <label for="country" class="form-label" style="font-weight: 600;">Country</label>
+                <input name="listing[country]" type="text" value="<%= listing.country %>" class="form-control" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+                <div class="invalid-feedback">Please enter the country name!</div>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+            <label for="location" class="form-label" style="font-weight: 600;">Location</label>
+            <input name="listing[location]" type="text" value="<%= listing.location %>" class="form-control" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+            <div class="invalid-feedback">Please enter the location!</div>
+        </div>
+        
+        <button type="submit" class="btn btn-dark edit-btn mt-3" style="
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%); 
+            border: solid 3px transparent; 
+            background-clip: padding-box; 
+            box-shadow: 0px 0px 0px 3px #ffffff00; 
+            color: white; 
+            min-height: 43px; 
+            padding: 0 30px; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: all .5s ease; 
+            width: auto; /* Keep default size on small screens */
+            cursor: pointer;">
+            Edit
+        </button>
+    </form>
+</div>
+
+<style>
+    /* Media query for larger screens */
+    @media (min-width: 768px) {
+        .edit-btn {
+            min-height: 30px; /* Reduce the height for larger screens */
+            padding: 5px 10px; /* Reduce padding for larger screens */
+            font-size: 12px; /* Optionally, reduce font size */
+        }
+    }
+</style>
